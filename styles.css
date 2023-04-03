@@ -1,0 +1,37 @@
+body {
+    height: 100vh;
+    background-color: #b6cfe5;
+    font-family: "Orbitron", Helvetica, Arial, sans-serif;
+}
+
+header {
+    text-align: center;
+    font-size: 8vmin;
+    margin-top: 3vmin;
+}
+
+img {
+    width: 15vmin;
+}
+
+h1 {
+    text-align: center;
+    padding-top: 3vmin;
+    padding-bottom: 5vmin;
+}
+
+h2 {
+    text-align: center;
+    padding-bottom: 6vmin;
+
+}
+
+.playing-cards {
+    display: grid; /*Create a grid container for the playing-cards class*/
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 5vmin;
+    max-width: 250px;
+    margin: 0 auto;
+    justify-content: center;
+}
