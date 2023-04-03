@@ -1,10 +1,11 @@
 /*----- constants -----*/
-const cards = {
-    
-}
-    
+
+
+
+
 /*----- state variables -----*/
 let cardState; 
+let score;
 
 /*----- cached elements  -----*/
 
