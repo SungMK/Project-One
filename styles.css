@@ -2,10 +2,10 @@ body {
     height: 100vh;
     background-color: #b6cfe5;
     font-family: "Orbitron", Helvetica, Arial, sans-serif;
+    text-align: center;
 }
 
 header {
-    text-align: center;
     font-size: 8vmin;
     margin-top: 3vmin;
 }
@@ -15,15 +15,17 @@ img {
 }
 
 h1 {
-    text-align: center;
     padding-top: 3vmin;
-    padding-bottom: 5vmin;
+    padding-bottom: 1vmin;
 }
 
 h2 {
-    text-align: center;
     padding-bottom: 6vmin;
+}
 
+#guess {
+    font-size: 2.5vmin;
+    padding-bottom: 3vmin;
 }
 
 .playing-cards {
@@ -37,18 +39,20 @@ h2 {
 }
 
 button {
-    margin-top: 9.2vmin;
+    margin-top: 6vmin;
     text-align: center;
-    sjustify-content: center;
+    font-family: "Orbitron", Helvetica, Arial, sans-serif;
+    justify-content: center;
     padding: 1vmin;
     font-size: 2vmin;
-    border: 0.01vmin solid #f88379	;
+    border: 0.4vmin solid #f88379	;
     border-radius: 4vmin;
     color: 	#FF7F7F;
+    background-color: white;
 }
 
 button:hover {
-    background-color: 	#FF7F7F;
+    background-color: #FF7F7F;
     color: white;
 }
 
