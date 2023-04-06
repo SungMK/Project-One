@@ -33,7 +33,7 @@ cardEls.forEach((card, cardIndexValue) => {
   });
 })
 
-playAgainBtn.addEventListener('click', resetGame);
+playAgainBtn.addEventListener('click', initialize);
 
 /*----- Functions -----*/
 initialize();
@@ -45,6 +45,10 @@ function initialize() {
   secondCard = null;
 
   revertToCardBackDefault();
+
+  displayLives.textContent = `${'Lives: 3'}`;
+  displayScore.textContent = `${'Score: 0'}`;
+  displayMessage.textContent = `${'Click any card to begin!'}`;
 
   cardEls.forEach((card, cardIndexValue) => {
     card.addEventListener('click', handleCardClick(card, cardIndexValue));
@@ -90,11 +94,6 @@ function handleCardMatch() {
   playerWins();
 }
 
-function handleCardMismatch() {
-  
-
-}
-
 function playerWins() {
   if (score === 5) {
     displayMessage.textContent = `${'Congratulations! You win!'}`;
@@ -102,7 +101,7 @@ function playerWins() {
       resetGame();
     }, 3000);
   }
-};
+}
 
 function playerLoses() {
   if (lives === 0) {
@@ -118,20 +117,3 @@ function revertToCardBackDefault() {
     card.setAttribute('src', './Card Face Images/Back/blue2.svg');
   });
 }
-
-function resetGame() {
-  lives = 3;
-  score = 0;
-  firstCard = null;
-  secondCard = null;
-
-  revertToCardBackDefault();
-
-  displayLives.textContent = `${'Lives: 3'}`;
-  displayScore.textContent = `${'Score: 0'}`;
-  displayMessage.textContent = `${'Click any card to begin!'}`;
-}
-
-// function resetGame() {
-//   initialize();
-// }
