@@ -51,39 +51,49 @@ function initialize() {
   });
 }
 
-// Need to break apart below code into smaller helper functions and clean up for better readability. 
-
-cardEls.forEach((card, cardIndexValue) => {
-    card.addEventListener('click', () => {
-      const clickedCard = cardFronts[cardIndexValue];
-      card.setAttribute('src', clickedCard.img);
+function handleCardClick(card, cardIndexValue) {
+  return () => {
+    const clickedCard = cardFronts[cardIndexValue];
+    card.setAttribute('src', clickedCard.img);
       
-      if (firstCard === null) {
-        firstCard = clickedCard;
-      } else if (secondCard === null) {
-        secondCard = clickedCard;
+    if (firstCard === null) {
+      firstCard = clickedCard;
+    } else if (secondCard === null) {
+      secondCard = clickedCard;
   
-        if (firstCard.img === secondCard.img) {
-          score+=1;
+      if (firstCard.img === secondCard.img) {
+        handleCardMatch();
+      } else {
+        lives-=1;
+        setTimeout(() => {
+          card.setAttribute('src', './Card Face Images/Back/blue2.svg');
+          const firstCardEl = document.querySelector(`[src="${firstCard.img}"]`);
+          firstCardEl.setAttribute('src', './Card Face Images/Back/blue2.svg');
           firstCard = null;
           secondCard = null;
-          displayMessage.textContent = `${"It's a match!"}`;
-          displayScore.textContent = `Score: ${score}`;
-        } else {
-          lives-=1;
-          setTimeout(() => {
-            card.setAttribute('src', './Card Face Images/Back/blue2.svg');
-            const firstCardEl = document.querySelector(`[src="${firstCard.img}"]`);
-            firstCardEl.setAttribute('src', './Card Face Images/Back/blue2.svg');
-            firstCard = null;
-            secondCard = null;
-            displayMessage.textContent = `${'Wrong Guess! Try again!'}`;
-            displayLives.textContent = `Lives: ${lives}`;
-          }, 1500);
-        }
+          displayMessage.textContent = `${'Wrong Guess! Try again!'}`;
+          displayLives.textContent = `Lives: ${lives}`;
+          playerLoses();
+        }, 1500);
       }
-    });
-});
+    }
+  }
+}
+
+function handleCardMatch() {
+  score+=1;
+  firstCard = null;
+  secondCard = null;
+  displayMessage.textContent = `${"It's a match!"}`;
+  displayScore.textContent = `Score: ${score}`;
+
+  playerWins();
+}
+
+function handleCardMismatch() {
+  
+
+}
 
 function playerWins() {
   if (score === 5) {
@@ -121,3 +131,7 @@ function resetGame() {
   displayScore.textContent = `${'Score: 0'}`;
   displayMessage.textContent = `${'Click any card to begin!'}`;
 }
+
+// function resetGame() {
+//   initialize();
+// }
