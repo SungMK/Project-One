@@ -31,22 +31,22 @@ cardEls.forEach((card, cardIndexValue) => {
   card.addEventListener('click', handleCardClick(card, cardIndexValue));
 });
 
-playAgainBtn.addEventListener('click', initialize);
+playAgainBtn.addEventListener('click', initialize); // This adds an event listener to the "Play Again" button so that when a 'click' is registered, it calls the initialize function, which resets the game.
 
 /*----- Functions -----*/
-initialize();
+initialize(); // When the initialize function is invoked, it starts the game. 
 
-function initialize() {
+function initialize() { // This function sets the values at the start of the game and also doubles as a reset function for when the game is reset automatically or when the player clicks the "Play Again button".
   lives = 3;
   score = 0;
   firstCard = null;
   secondCard = null;
 
-  resetCardImages();
+  resetCardImages(); // This function resets the img srcs for every card
 
-  displayLives.textContent = `${'Lives: 3'}`;
-  displayScore.textContent = `${'Score: 0'}`;
-  displayMessage.textContent = `${'Click any card to begin!'}`;
+  displayLives.textContent = 'Lives: 3'; // Rather than hard coding the HTML with the strings of text, it will just be updated when the game initializes
+  displayScore.textContent = 'Score: 0'; 
+  displayMessage.textContent = 'Click any card to begin!';
 }
 
 function handleCardClick(card, cardIndexValue) {
@@ -106,8 +106,8 @@ function playerLoses() {
   }
 }
 
-function resetCardImages() {
+function resetCardImages() { // This function resets the card images back to the default back face.
   cardEls.forEach(card => {
-    card.setAttribute('src', './Card Face Images/Back/blue2.svg');
+    card.setAttribute('src', './Card Face Images/Back/blue2.svg');  // Instead of hard coding the img src into each of the cards in the HTML, the card img srcs will just be updated in the JavaScript. 
   });
 }
