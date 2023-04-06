@@ -36,7 +36,7 @@ playAgainBtn.addEventListener('click', initialize); // This adds an event listen
 /*----- Functions -----*/
 initialize(); // When the initialize function is invoked, it starts the game. 
 
-function initialize() { // This function sets the values at the start of the game and also doubles as a reset function for when the game is reset automatically or when the player clicks the "Play Again button".
+function initialize() { // This function sets the values at the start of the game and also doubles as a reset function for when the game is reset automatically or when the player clicks the "Play Again" button.
   lives = 3;
   score = 0;
   firstCard = null;
@@ -69,7 +69,7 @@ function handleCardClick(card, cardIndexValue) {
           firstCardEl.setAttribute('src', './Card Face Images/Back/blue2.svg');
           firstCard = null;
           secondCard = null;
-          displayMessage.textContent = `${'Wrong Guess! Try again!'}`;
+          displayMessage.textContent = 'Wrong Guess! Try again!';
           displayLives.textContent = `Lives: ${lives}`;
           playerLoses();
         }, 1500);
@@ -79,35 +79,35 @@ function handleCardClick(card, cardIndexValue) {
 }
 
 function handleCardMatch() {
-  score+=1;
-  firstCard = null;
-  secondCard = null;
-  displayMessage.textContent = `${"It's a match!"}`;
-  displayScore.textContent = `Score: ${score}`;
+  score+=1; // Score is incremented by 1
+  firstCard = null; // firstCard variable is reset to null so player can select new pair of cards
+  secondCard = null; // secondCard variable is also reset to null so player can select new pair of cards
+  displayMessage.textContent = "It's a match!"; // The 'Message' section will update to "It's a match!"
+  displayScore.textContent = `Score: ${score}`; // Score section will update to display the current score
 
-  playerWins();
+  playerWins(); // Function is invoked and checks if the score is set to 5. If it's not equal to 5, nothing happens, and the game continues; but, if the score is equal to 5, the function is executed
 }
 
 function playerWins() {
-  if (score === 5) {
-    displayMessage.textContent = `${'Congratulations! You win!'}`;
-    setTimeout(() => {
-      initialize();
+  if (score === 5) { // Checks if score is equal to 5
+    displayMessage.textContent = 'Congratulations! You win!!!'; // If score is equal to 5, the 'Message' section will update to 'Congratulations! You win!'
+    setTimeout(() => { // After displaying the message, setTimeout will run intialize after 3 seconds
+      initialize(); // Initialize function invoked, resetting the game to its original state
     }, 3000);
   }
 }
 
-function playerLoses() {
-  if (lives === 0) {
-    displayMessage.textContent = `${'You have no more lives! You lose!'}`;
-    setTimeout(() => {
-      initialize();
+function playerLoses() { 
+  if (lives === 0) { // Checks if lives are equal to 0
+    displayMessage.textContent = 'You have no more lives! You lose!'; // If lives are equal to 0, the 'Message' section will update to 'You have no more lives! You lose!'
+    setTimeout(() => { // After displaying the message, setTimeout will run initialize after 3 seconds
+      initialize(); // Initialize function invoked, resetting the game to its original state
     }, 3000);
   }
 }
 
-function resetCardImages() { // This function resets the card images back to the default back face.
-  cardEls.forEach(card => {
-    card.setAttribute('src', './Card Face Images/Back/blue2.svg');  // Instead of hard coding the img src into each of the cards in the HTML, the card img srcs will just be updated in the JavaScript. 
+function resetCardImages() { // This function resets the card images back to the default back face
+  cardEls.forEach(card => { // Loops through each element of the array (each card) and changes the img src for each one
+    card.setAttribute('src', './Card Face Images/Back/blue2.svg');  // Instead of hard coding the img src into each of the cards in the HTML, the card img srcs will just be updated using setAttribute
   });
 }
