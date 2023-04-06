@@ -28,10 +28,8 @@ const playAgainBtn = document.querySelector('button');
 
 /*----- Event Listeners -----*/
 cardEls.forEach((card, cardIndexValue) => {
-  card.addEventListener('click', () => {
-  handleClick(card, cardIndexValue);
-  });
-})
+  card.addEventListener('click', handleCardClick(card, cardIndexValue));
+});
 
 playAgainBtn.addEventListener('click', initialize);
 
@@ -44,15 +42,11 @@ function initialize() {
   firstCard = null;
   secondCard = null;
 
-  revertToCardBackDefault();
+  resetCardImages();
 
   displayLives.textContent = `${'Lives: 3'}`;
   displayScore.textContent = `${'Score: 0'}`;
   displayMessage.textContent = `${'Click any card to begin!'}`;
-
-  cardEls.forEach((card, cardIndexValue) => {
-    card.addEventListener('click', handleCardClick(card, cardIndexValue));
-  });
 }
 
 function handleCardClick(card, cardIndexValue) {
@@ -98,7 +92,7 @@ function playerWins() {
   if (score === 5) {
     displayMessage.textContent = `${'Congratulations! You win!'}`;
     setTimeout(() => {
-      resetGame();
+      initialize();
     }, 3000);
   }
 }
@@ -107,12 +101,12 @@ function playerLoses() {
   if (lives === 0) {
     displayMessage.textContent = `${'You have no more lives! You lose!'}`;
     setTimeout(() => {
-      resetGame();
+      initialize();
     }, 3000);
   }
 }
 
-function revertToCardBackDefault() {
+function resetCardImages() {
   cardEls.forEach(card => {
     card.setAttribute('src', './Card Face Images/Back/blue2.svg');
   });
