@@ -31,10 +31,6 @@ cardEls.forEach((card, cardIndexValue) => {
   card.addEventListener('click', handleCardClick(card, cardIndexValue));
 });
 
-// cardEls.forEach((card, cardIndexValue) => {
-//   card.addEventListener('click', handleCardClick);
-// });
-
 playAgainBtn.addEventListener('click', initialize); // This adds an event listener to the "Play Again" button so that when a 'click' is registered, it calls the initialize function, which resets the game.
 
 /*----- Functions -----*/
