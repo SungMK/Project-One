@@ -19,7 +19,7 @@ Concentration is a memory game where a number of cards are arranged in a grid, f
 # Getting Started
 Click the link below and start the game by clicking on any card!
 
-https://sungmk.github.io/Project-One/
+https://sungmk.github.io/Concentration-Memory-Game/
 
 <br>
 
@@ -41,6 +41,6 @@ https://sungmk.github.io/Project-One/
 <br>
 
 # Icebox items
-- Feature 1: Shuffle function
-- Feature 2: Option to choose different levels of difficulty with varying number of lives and gameboard sizes
-- Feature 3: Player versus AI option
+- ~~Feature 1: Implement Shuffle function~~
+- Feature 2: Incorporate different levels of difficulty with varying number of lives and gameboard sizes
+- Feature 3: Incorporate Player versus AI option

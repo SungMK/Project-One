@@ -28,10 +28,10 @@ const playAgainBtn = document.querySelector('button');
 
 /*----- Event Listeners -----*/
 cardEls.forEach((card, cardIndexValue) => { 
-  card.addEventListener('click', handleCardClick(card, cardIndexValue));
+card.addEventListener('click', handleCardClick(card, cardIndexValue)); // Event listener added to each card element; handleCardClick runs when card is clicked
 });
 
-playAgainBtn.addEventListener('click', initialize); 
+playAgainBtn.addEventListener('click', initialize); // Initialize runs when 'Play Again' button is clicked
 
 /*----- Functions -----*/
 initialize(); // Game starts automatically 
@@ -59,7 +59,7 @@ function handleCardClick(card, cardIndexValue) { // Callback function for Event 
     } else if (secondCard === null) { // If the player has clicked a card (i.e. the first card) then the next clicked card is assigned to the variable secondCard
       secondCard = clickedCard; 
   
-      if (firstCard.img === secondCard.img) { // If the imgs of the firstCard and secondCard match, then it will run handleCardMatch
+      if (firstCard.img === secondCard.img) { // If both firstCard and secondCard are defined, checks if the imgs of the firstCard and secondCard match and runs handleCardMatch or handleWrongMatch
         handleCardMatch();
       } else { // If the imgs do not match, then it will run handleWrongMatch
         handleWrongMatch(card);
@@ -116,3 +116,4 @@ function resetCardImages() { // Resets card images by looping through each card 
     card.setAttribute('src', './Card Face Images/Back/blue2.svg');  
   });
 }
+
