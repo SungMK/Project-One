@@ -42,6 +42,7 @@ function initialize() { // Sets the default values at the start of the game and 
   firstCard = null;
   secondCard = null;
 
+  shuffleCards();
   resetCardImages(); 
 
   displayLives.textContent = 'Lives: 3'; 
@@ -117,3 +118,9 @@ function resetCardImages() { // Resets card images by looping through each card 
   });
 }
 
+function shuffleCards() { // Shuffles Cards with Fisher-Yates shuffle algorithm
+  for (let i = cardFronts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [cardFronts[i], cardFronts[j]] = [cardFronts[j], cardFronts[i]];
+  }
+}
